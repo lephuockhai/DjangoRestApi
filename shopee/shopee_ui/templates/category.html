@@ -1,0 +1,66 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Welcome to the Category Page</h1>
+    <td><a href="{% url 'logout' %}" class="btn btn-success">Log Out</a></td>
+    <td><a href="{% url 'home' %}" class="btn btn-success">Go Home</a></td>
+    <div class="container mt-5">
+        <form method="get">
+            <div class="mx-auto text-center d-flex ">
+                <input class="form-control" name="product" placeholder="Search product" style="width:400px">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container mt-5">
+        {% if cat_list %}
+        <div class="row">
+            {% for category in cat_list %}
+            <div class="col-md-2">
+                <div class="text-center">
+                    <a href="{{ category.id }}">
+                        <img src="https://img.ws.mms.shopee.vn/{{ category.image }}" class="p-2" style="height:100px">
+                        <p>{{ category.display_name }}</p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center"> No category found.. Try something else</p>
+        {% endif %}
+    </div>
+
+    <div class="container mt-5">
+        {% if products %}
+        <div class="row">
+            {% for i in products %}
+            <div class="col-md-2">
+                <div class="text-center">
+                    <a href="{% url 'Product_page' i.id %}">
+                        <img src="https://img.ws.mms.shopee.vn/{{ i.image }}" class="p-2" loading="lazy" style="height:100px">
+                        <p>{{i.name|truncatechars:50}}</p>
+                        <p>giá: {{i.price}}</p>
+                        <p>đã bán: {{i.sold}}</p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center"> No product found.. Try something else</p>
+        {% endif %}
+    </div>
+</body>
+<footer class="bg-dark p-2 mt-5">
+    <p class="text-center text-white">Django Redis</p>
+</footer>
+</html>

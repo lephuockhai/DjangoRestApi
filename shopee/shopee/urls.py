@@ -15,10 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import re_path, include
-from shopee_api import urls as shopee_urls
+from django.urls import path, include
+from shopee_api import urls as shopee_api
+from shopee_ui import urls as shopee_ui
 urlpatterns = [
-    re_path('admin/', admin.site.urls),
-    re_path('api-auth/', include('rest_framework.urls')),
-    re_path('shopee/', include(shopee_urls)),
+    path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    path('shopee/api/', include(shopee_api)),
+    path('shopee/', include(shopee_ui)),
 ]

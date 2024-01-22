@@ -1,0 +1,50 @@
+<!-- templates/signup.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_register.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-container">
+            <h1>Register in UI</h1>
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>ERROR!</strong>
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                        {% for field, error in form.errors.items %}
+                            <p>{{ field }}: {{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-user"></i></label>
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password1"><i class="fas fa-lock"></i></label>
+                    <input type="password" name="password1" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <label for="password2"><i class="fas fa-lock"></i></label>
+                    <input type="password" name="password2" placeholder="Confirm Password" required>
+                </div>
+                <div class="input-group">
+                    <label for="email"><i class="fas fa-envelope"></i></label>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

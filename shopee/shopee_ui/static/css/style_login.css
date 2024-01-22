@@ -1,0 +1,66 @@
+/* static/css/style_signin.css */
+
+body {
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    max-width: 400px;
+    background: rgba(127, 225, 249, 0.8); /* Màu nền smoke blur (mờ) */
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ */
+    border-radius: 10px;
+    overflow: hidden; /* Đảm bảo nội dung không bị mờ */
+}
+
+.signin-container {
+    background-color: #c2a7f1;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(14, 206, 227, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.input-group label {
+    margin-right: 10px;
+    color: #555;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #007bb5;
+}

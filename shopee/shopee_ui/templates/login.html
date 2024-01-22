@@ -1,0 +1,46 @@
+<!-- templates/signin.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signin-container">
+            <h1>Log In</h1>
+            <form method="post" action="{% url 'login' %}">
+                
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Oops! Something went wrong:</strong>
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                        {% for field, error in form.errors.items %}
+                            <p>{{ field }}: {{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-user"></i></label>
+                    <input type="text" name="username" placeholder="Username or Email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password"><i class="fas fa-lock"></i></label>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+                <div class="button-container">
+                    <a href="{% url 'register' %}" class="button">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body> 
+</html>
