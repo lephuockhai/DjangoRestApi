@@ -14,6 +14,34 @@ from pathlib import Path
 import os
 from datetime import timedelta
 from decouple import config
+import dj_database_url
+
+# ON_HEROKU = os.environ.get('ON_HEROKU')
+# HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
+
+# if ON_HEROKU:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': config('DB_NAME'),
+#             'USER': config('DB_USER'),
+#             'PASSWORD': config('DB_PASSWORD'),
+#             'HOST': config('DB_HOST'),
+#             'PORT': config('DB_PORT')
+#         }
+#     }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': 'mydatabase', # This is where you put the name of the db file. 
+#                     # If one doesn't exist, it will be created at migration time.
+#         }
+#     }
+
+
+# DATABASES['default'] = dj_database_url.config()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +59,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -107,7 +136,16 @@ WSGI_APPLICATION = 'shopee.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT')
+    }
+}
 
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"

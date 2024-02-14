@@ -233,6 +233,7 @@ def add_to_cart(request):
         price = request.data.get('price')
 
         data = (cart_id, user_id, product_id, quantity, price,)
+        print(data)
         result = ConnectByProd(prod_name= 'prod_add_to_cart', data= data)
         return JsonResponse({'cart_count': result[0]})
     else:
