@@ -2,7 +2,15 @@
 
 ## Introduction
 
-Welcome to the Shopee E-commerce project! This is an open-source project to build a simple, flexible, and scalable e-commerce website. The project is developed using the Python programming language and utilizes the Flask framework to create a seamless online shopping experience.
+Welcome to the Shopee E-commerce project! This is an open-source project to build a simple, flexible, and scalable e-commerce website. The project is developed using the Python programming language and utilizes the Django framework to create a seamless online shopping experience. Some features of this Todo List application are:
+- Register an account;
+- Log in to your account;
+- Log out account;
+- Authenticate user identity us JWT authentication;
+- Authenticate action of user;
+- Catching product
+- Buy and Pay order;
+- Add product to Cart;
 
 ## System Requirements
 
